@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM docker:dind
 
 RUN apk --no-cache add git
 COPY entrypoint.sh /entrypoint.sh
