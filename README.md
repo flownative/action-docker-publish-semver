@@ -1,0 +1,2 @@
+# Publish SemVer Docker Tags
+…
