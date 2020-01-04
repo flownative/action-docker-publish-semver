@@ -14,8 +14,6 @@ DOCKER_IMAGE_TAG_PATCH_WITH_SUFFIX=$(echo "$TAG" | cut -d"." -f3 | sed -e 's/v//
 
 DOCKER_IMAGE_GITHUB="docker.pkg.github.com/${INPUT_GITHUB_PACKAGE_NAME}:${TAG}"
 
-INPUT_TARGET_IMAGE_NAME=${DOCKER_IO_REGISTRY_HOST}/${DOCKER_IO_REGISTRY_ORGANIZATION}
-
 echo "${GITHUB_TOKEN}" | docker login -u flownative --password-stdin docker.pkg.github.com
 echo "${INPUT_TARGET_REGISTRY_PASSWORD}" | docker login -u "${INPUT_TARGET_REGISTRY_USERNAME}" --password-stdin "${INPUT_TARGET_REGISTRY_ENDPOINT}"
 
