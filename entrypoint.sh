@@ -18,7 +18,7 @@ echo "${INPUT_TARGET_REGISTRY_PASSWORD}" | docker login -u "${INPUT_TARGET_REGIS
 git checkout ${TAG}
 set -- "-t" "${INPUT_SOURCE_IMAGE_NAME}:${TAG}"
 
-BUILD_ENV_SCRIPT=${HOME}/.github/build-env.sh
+BUILD_ENV_SCRIPT=${GITHUB_WORKSPACE}/.github/build-env.sh
 
 if [ -f "${BUILD_ENV_SCRIPT}" ]; then
   # shellcheck disable=SC1090
