@@ -1,11 +1,7 @@
 #!/bin/sh
 set -x
 
-TAG=${INPUT_TAG:-}
-if [ -z "${TAG}" ]; then
-  echo "Missing required variable TAG"
-  exit 1
-fi
+TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags/||')
 
 DOCKER_IMAGE_TAG_MAJOR=$(echo "$TAG" | cut -d"." -f1 | sed -e 's/v//')
 DOCKER_IMAGE_TAG_MINOR=$(echo "$TAG" | cut -d"." -f2 | sed -e 's/v//')

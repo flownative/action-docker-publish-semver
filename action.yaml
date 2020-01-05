@@ -2,8 +2,8 @@ name: 'Publish SemVer Docker tags'
 description: 'Tag and publish a Docker image according to Semantic Versioning'
 author: 'Flownative'
 inputs:
-  tag:
-    description: 'The full tag. This must be a semver tag of an existing tagged image. For example, `v1.2.5-12`'
+  tag_ref:
+    description: 'The full tag reference. This must be a semver tag ref of an existing tagged image. For example, `refs/tags/v1.2.5-12`'
     required: true
     default: ''
   source_image_name:
