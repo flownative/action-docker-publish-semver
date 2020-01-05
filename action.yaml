@@ -2,14 +2,26 @@ name: 'Publish SemVer Docker tags'
 description: 'Tag and publish a Docker image according to Semantic Versioning'
 author: 'Flownative'
 inputs:
-  github_package_name:
-    description: 'The full Github package (docker image) name. For example, `flownative/docker-magic-image/magic-image`'
-    required: true
-    default: ''
   tag:
     description: 'The full tag. This must be a semver tag of an existing tagged image. For example, `v1.2.5-12`'
     required: true
     default: ''
+  source_image_name:
+    description: 'The full source image name (to be built), without tag. For example, `docker.pkg.github.com/flownative/docker-magic-image/magic-image`'
+    required: true
+    default: ''
+  source_registry_username:
+    description: 'Username for the source registry'
+    required: true
+    default: ''
+  source_registry_password:
+    description: 'Password for the source registry'
+    required: true
+    default: ''
+  source_registry_endpoint:
+    description: 'Endpoint of the source registry. For example, `https://docker.pkg.github.com/v2/`'
+    required: false
+    default: 'https://docker.pkg.github.com/v2/'
   target_image_name:
     description: 'The full target image name, without tag. For example, `docker.io/flownative/magic-image`'
     required: true
