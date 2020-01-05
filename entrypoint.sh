@@ -26,11 +26,12 @@ if [ -f "${BUILD_ENV_SCRIPT}" ]; then
   IFS="$(printf '\n ')" && IFS="${IFS% }"
   set -o noglob
   for line in $(env | grep BUILD_ARG_); do
-    set -- "$@" '--build-arg' "$(echo $line | sed -E 's/(BUILD_ARG_)//g')"
+    set -- "$@" '--build-arg' $(echo "$line" | sed -E 's/(BUILD_ARG_)//g')
   done
+  echo "Build arguments: " "$@"
+else
+  echo "Skipping build env script (none found at ${BUILD_ENV_SCRIPT})"
 fi
-
-echo "Build arguments: " "$@"
 
 docker build "$@" .
 
