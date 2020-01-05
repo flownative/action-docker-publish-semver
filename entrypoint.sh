@@ -16,7 +16,7 @@ echo "${INPUT_SOURCE_REGISTRY_PASSWORD}" | docker login -u "${INPUT_SOURCE_REGIS
 echo "${INPUT_TARGET_REGISTRY_PASSWORD}" | docker login -u "${INPUT_TARGET_REGISTRY_USERNAME}" --password-stdin "${INPUT_TARGET_REGISTRY_ENDPOINT}"
 
 git checkout ${TAG}
-set -- "-" "${INPUT_SOURCE_IMAGE_NAME}:${TAG}"
+set -- "-t" "${INPUT_SOURCE_IMAGE_NAME}:${TAG}"
 
 BUILD_ENV_SCRIPT=${HOME}/.github/build-env.sh
 
@@ -29,6 +29,8 @@ if [ -f "${BUILD_ENV_SCRIPT}" ]; then
     set -- "$@" '--build-arg' "$(echo $line | sed -E 's/(BUILD_ARG_)//g')"
   done
 fi
+
+echo "Build arguments: " "$@"
 
 docker build "$@" .
 
