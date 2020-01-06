@@ -5,7 +5,7 @@ creates multiple new tags according to Semantic Versioning, and publishes them t
 target registry.
 
 In short, if you have an image `docker.pkg.github.com/acme/docker-magic-wand/magic-wand:1.2.3-4`,
-it will be tagged an released as:
+it will be tagged and released as:
 
 - `acme/magic-wand:1.2.3-4`
 - `acme/magic-wand:1.2.3`
