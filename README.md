@@ -15,6 +15,10 @@ it will be tagged and released as:
 and optionally as 
 - `acme/magic-wand:latest`
 
+Note: if the given `tag_ref` has a "v" prefix (such as in "v1.2.3"), it will be removed before
+using the tag for the target Docker image. Therefore, a target image tag will never have that
+prefix.
+
 ## Example workflow
 
 ````yaml
