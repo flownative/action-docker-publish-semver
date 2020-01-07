@@ -1,12 +1,14 @@
 #!/bin/sh
 set -x
 
-TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags/||')
+TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags/v||')
 
-DOCKER_IMAGE_TAG_MAJOR=$(echo "$TAG" | cut -d"." -f1 | sed -e 's/v//')
-DOCKER_IMAGE_TAG_MINOR=$(echo "$TAG" | cut -d"." -f2 | sed -e 's/v//')
-DOCKER_IMAGE_TAG_PATCH=$(echo "$TAG" | cut -d"." -f3 | cut -d"-" -f1 | sed -e 's/v//')
-DOCKER_IMAGE_TAG_PATCH_WITH_SUFFIX=$(echo "$TAG" | cut -d"." -f3 | sed -e 's/v//')
+DOCKER_IMAGE_TAG_MAJOR=$(echo "$TAG" | cut -d"." -f1)
+DOCKER_IMAGE_TAG_MINOR=$(echo "$TAG" | cut -d"." -f2)
+DOCKER_IMAGE_TAG_PATCH=$(echo "$TAG" | cut -d"." -f3)
+DOCKER_IMAGE_TAG_PATCH_WITH_SUFFIX=$(echo "$TAG" | cut -d"." -f3)
+
+echo "Tagging ${DOCKER_IMAGE_TAG_MAJOR}, ${DOCKER_IMAGE_TAG_MINOR}, ${DOCKER_IMAGE_TAG_PATCH} and ${DOCKER_IMAGE_TAG_PATCH_WITH_SUFFIX} for ${INPUT_TARGET_IMAGE_NAME} ..."
 
 echo "${INPUT_SOURCE_REGISTRY_PASSWORD}" | docker login -u "${INPUT_SOURCE_REGISTRY_USERNAME}" --password-stdin "${INPUT_SOURCE_REGISTRY_ENDPOINT}"
 echo "${INPUT_TARGET_REGISTRY_PASSWORD}" | docker login -u "${INPUT_TARGET_REGISTRY_USERNAME}" --password-stdin "${INPUT_TARGET_REGISTRY_ENDPOINT}"
