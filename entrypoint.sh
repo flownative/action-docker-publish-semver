@@ -1,7 +1,11 @@
 #!/bin/sh
 set -x
 
-TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags/v||')
+TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags||')
+
+if [ -n "$INPUT_TAG_STRIP_V_PREFIX" ]; then
+  TAG=$(echo "${TAG}" | sed -e 's/^v//')
+fi
 
 DOCKER_IMAGE_TAG_MAJOR=$(echo "$TAG" | cut -d"." -f1)
 DOCKER_IMAGE_TAG_MINOR=$(echo "$TAG" | cut -d"." -f2)

@@ -10,6 +10,10 @@ inputs:
     description: 'If a "latest" tag should also be created and published. Must be non-empty for "yes" and empty for "no"'
     required: false
     default: 'true'
+  tag_strip_v_prefix:
+    description: 'If the "v" prefix should be removed from a tag before using it for tagging a Docker image. Must be non-empty for "yes" and empty for "no"'
+    required: false
+    default: 'true'
   source_image_name:
     description: 'The full source image name (to be built), without tag. For example, `docker.pkg.github.com/flownative/docker-magic-image/magic-image`'
     required: true
