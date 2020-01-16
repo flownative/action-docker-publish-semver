@@ -1,5 +1,7 @@
 #!/bin/sh
-set -x
+
+# Exit automatically on any error:
+set -e
 
 TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags||' | sed -e 's/^v//')
 
