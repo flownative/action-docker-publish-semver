@@ -7,7 +7,7 @@ inputs:
     required: true
     default: ''
   tag_latest:
-    description: 'If a "latest" tag should also be created and published. Must be non-empty for "yes" and empty for "no"'
+    description: 'If a "latest" tag should also be created and published. Allowed values: "yes", "no", "true", "false"'
     required: false
     default: 'true'
   source_image_name:
