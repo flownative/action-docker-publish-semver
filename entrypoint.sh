@@ -3,7 +3,7 @@
 set -e
 set -x
 
-TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags||' | sed -e 's/^v//')
+TAG=$(echo "${INPUT_TAG_REF}" | sed -e 's|refs/tags||' | sed -e 's/^v//' | sed -e 's/+.*$//')
 
 DOCKER_IMAGE_TAG_MAJOR=$(echo "$TAG" | cut -d"." -f1)
 DOCKER_IMAGE_TAG_MINOR=$(echo "$TAG" | cut -d"." -f2)
