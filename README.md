@@ -1,13 +1,12 @@
-# Docker Image Release Github Action
+# Docker Publish SemVer Github Action
 
-This Github action takes an existing, tagged Docker image from the Github package repository, 
-creates multiple new tags according to Semantic Versioning, and publishes them to a given
-target registry.
+This Github action takes an existing, tagged Docker image from the a Docker image registry
+(for example, the Github Package Repository), creates multiple new tags according to 
+Semantic Versioning, and publishes them to a given target registry.
 
 In short, if you have an image `docker.pkg.github.com/acme/docker-magic-wand/magic-wand:1.2.3+4`,
 it will be tagged and released as:
 
-- `acme/magic-wand:1.2.3+4`
 - `acme/magic-wand:1.2.3`
 - `acme/magic-wand:1.2`
 - `acme/magic-wand:1`
@@ -15,9 +14,13 @@ it will be tagged and released as:
 and optionally as 
 - `acme/magic-wand:latest`
 
-Note: if the given `tag_ref` has a "v" prefix (such as in "v1.2.3"), it will be removed before
-using the tag for the target Docker image. Therefore, a target image tag will never have that
-prefix.
+Notes:
+- if the given `tag_ref` has a "v" prefix (such as in "v1.2.3"), it will be removed before
+  using the tag for the target Docker image. Therefore, a target image tag will never have that
+  prefix
+- the "build version" suffix ("4" in the case of "1.2.3+4") will be omitted, because the plus
+  sign is not allowed as part of a Docker image tag. It also cannot be converted to "-", because
+  a dash is the delimiter for a "pre-release" part of a SemVer version string (e.g "beta5").
 
 ## Example workflow
 
