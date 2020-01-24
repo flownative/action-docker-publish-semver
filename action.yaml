@@ -1,4 +1,4 @@
-name: 'Publish SemVer Docker tags'
+name: 'Docker Publish SemVer Tags'
 description: 'Tag and publish a Docker image according to Semantic Versioning'
 author: 'Flownative'
 inputs:
