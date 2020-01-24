@@ -4,10 +4,10 @@ This Github action takes an existing, tagged Docker image from the Github packag
 creates multiple new tags according to Semantic Versioning, and publishes them to a given
 target registry.
 
-In short, if you have an image `docker.pkg.github.com/acme/docker-magic-wand/magic-wand:1.2.3-4`,
+In short, if you have an image `docker.pkg.github.com/acme/docker-magic-wand/magic-wand:1.2.3+4`,
 it will be tagged and released as:
 
-- `acme/magic-wand:1.2.3-4`
+- `acme/magic-wand:1.2.3+4`
 - `acme/magic-wand:1.2.3`
 - `acme/magic-wand:1.2`
 - `acme/magic-wand:1`
@@ -62,3 +62,20 @@ jobs:
           target_registry_password: ${{ secrets.DOCKER_IO_REGISTRY_PASSWORD }}
           target_registry_endpoint: https://index.docker.io/v1/
 ````
+
+## Outputs
+
+After a successful run, the action provides your workflow with the following outputs:
+
+- `image_tag`: The full tag of the Docker image, e.g. "1.2.3+42" or "2.12.19-beta1+23"
+- `image_tag_major`: Major version part of the image tag, e.g. "1" if the version was 1.2.3+42
+- `image_tag_minor`: Minor version part of the image tag, e.g. "2" if the version was 1.2.3+42
+- `image_tag_patch`: Patch version part of the image tag, e.g. "3" if the version was 1.2.3+42
+- `image_tag_patch_with_pre_release`: 'Patch version part with suffix, e.g. "3+42" if the version was 1.2.3+42
+
+## Implementation Note
+
+The repository of this action does not contain the actual implementation code. Instead, it's referring to a pre-built
+image in its `Dockerfile` in order to save resources and speed up workflow runs.
+
+The code of this action can be found [here](https://github.com/flownative/docker-action-docker-publish-semver).
