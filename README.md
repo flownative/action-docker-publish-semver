@@ -22,6 +22,12 @@ Notes:
   sign is not allowed as part of a Docker image tag. It also cannot be converted to "-", because
   a dash is the delimiter for a "pre-release" part of a SemVer version string (e.g "beta5").
 
+## Additional custom tag
+
+You may also specify a custom tag using the "tag_custom" argument. If the value of this argument
+is not empty, the image is additionally tagged using this given tag. See the example below for more
+details. 
+
 ## Example workflow
 
 ````yaml
@@ -54,6 +60,7 @@ jobs:
         with:
           tag_ref: ${{ github.ref }}
           tag_latest: 'yes'
+          tag_custom: 'some-custom-tag'
 
           source_image_name: docker.pkg.github.com/flownative/docker-base/base
           source_registry_username: github

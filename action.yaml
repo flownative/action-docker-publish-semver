@@ -10,6 +10,10 @@ inputs:
     description: 'If a "latest" tag should also be created and published. Allowed values: "yes", "no", "true", "false"'
     required: false
     default: 'true'
+  tag_custom:
+    description: 'If a custom tag should also be created and published. If not empty, the image will be tagged with the value of this option.'
+    required: false
+    default: ''
   source_image_name:
     description: 'The full source image name (to be built), without tag. For example, `docker.pkg.github.com/flownative/docker-magic-image/magic-image`'
     required: true
