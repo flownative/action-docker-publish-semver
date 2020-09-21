@@ -86,6 +86,7 @@ After a successful run, the action provides your workflow with the following out
 ## Implementation Note
 
 The repository of this action does not contain the actual implementation code. Instead, it's referring to a pre-built
-image in its `Dockerfile` in order to save resources and speed up workflow runs.
+image in order to save resources and speed up workflow runs.
 
 The code of this action can be found [here](https://github.com/flownative/docker-action-docker-publish-semver).
+

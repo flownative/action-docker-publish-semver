@@ -60,7 +60,8 @@ outputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://flownative/action-docker-publish-semver:1'
 branding:
   icon: 'package'
   color: 'blue'
+
