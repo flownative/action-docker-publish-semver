@@ -1,6 +1,6 @@
 # Docker Publish SemVer Github Action
 
-This Github action takes an existing, tagged Docker image from the a Docker image registry
+This Github action takes an existing, tagged Docker image from a Docker image registry
 (for example, the Github Package Repository), creates multiple new tags according to 
 Semantic Versioning, and publishes them to a given target registry.
 
